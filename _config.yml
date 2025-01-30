@@ -30,7 +30,6 @@ twitter_username: realtylenol
 github_username:  twhamr
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
 
