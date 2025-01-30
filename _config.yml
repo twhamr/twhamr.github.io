@@ -30,9 +30,8 @@ twitter_username: realtylenol
 github_username:  twhamr
 
 # Build settings
-remote_theme: pages-themes/hacker@v0.2.0
+theme: minima
 plugins:
-  - jekyll-remote-theme
   - jekyll-feed
 
 # Exclude from processing.
