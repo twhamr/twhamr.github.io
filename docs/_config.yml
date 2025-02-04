@@ -11,11 +11,17 @@ collections_dir: _pages
 
 # Site owner
 owner:
-  - name: Tyler Hamrick
-  - email: hamrtw02@gmail.com
-  - bio: "Undergrad Student studying Informatics @ Indiana University Bloomington"
-  - github_username: twhamr
-  - twitter_username: realtylenol
+  name: Tyler Hamrick
+  email: hamrtw02@gmail.com
+  bio: "Undergrad Student studying Informatics @ Indiana University Bloomington"
+
+# Owner's socials
+social:
+  github: twhamr
+  linkedin: tywahamr
+  twitter:
+  instagram:
+  youtube:
 
 
 # Build settings
