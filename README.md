@@ -1,3 +1,3 @@
 # twhamr.github.io
 
-Personal webpage powered by Jekyll and Minima
+Personal webpage powered by Jekyll and Bootstrap
