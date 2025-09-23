@@ -1,0 +1,300 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+
+<!-- Blog Header -->
+<section class="py-5 bg-dark bg-opacity-25">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-blog text-primary"></i> Blog
+                </h1>
+                <p class="lead">Thoughts, updates, and insights from my coding journey</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div id="blog-posts-container">
+                    {% if site.posts.size > 0 %}
+                        {% for post in site.posts %}
+                        <article class="blog-post" data-categories="{% for category in post.categories %}{{ category | slugify }} {% endfor %}">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h2 class="h3 mb-2">
+                                        <a href="{{ post.url | relative_url }}" class="text-decoration-none text-light">
+                                            {{ post.title }}
+                                        </a>
+                                    </h2>
+                                    <div class="post-meta">
+                                        <i class="fas fa-calendar"></i> {{ post.date | date: "%B %d, %Y" }}
+                                        {% if post.categories.size > 0 %}
+                                        <span class="ms-3">
+                                            <i class="fas fa-tags"></i>
+                                            {% for category in post.categories %}
+                                                <span class="tech-tag category-tag" data-category="{{ category | slugify }}">{{ category }}</span>
+                                            {% endfor %}
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="post-excerpt">
+                                {% if post.excerpt %}
+                                    {{ post.excerpt | strip_html | truncatewords: 50 }}
+                                {% else %}
+                                    {{ post.content | strip_html | truncatewords: 50 }}
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mt-3">
+                                <a href="{{ post.url | relative_url }}" class="btn btn-outline-primary">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-5">
+                            <div class="custom-card">
+                                <div class="card-body p-5">
+                                    <i class="fas fa-pencil-alt fa-3x text-primary mb-4"></i>
+                                    <h3>Coming Soon!</h3>
+                                    <p class="lead">I'm working on some exciting blog posts. Check back soon for updates on my latest projects and coding adventures!</p>
+                                    
+                                    <div class="mt-4">
+                                        <h5>What to expect:</h5>
+                                        <ul class="list-unstyled mt-3">
+                                            <li class="mb-2">
+                                                <i class="fas fa-rocket text-primary"></i> 
+                                                Project deep-dives and technical tutorials
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-lightbulb text-primary"></i> 
+                                                Problem-solving insights and lessons learned
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-code text-primary"></i> 
+                                                Code snippets and best practices
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-graduation-cap text-primary"></i> 
+                                                Learning journey updates
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Categories Filter -->
+                    {% assign categories = site.categories | sort %}
+                    {% if categories.size > 0 and site.posts.size > 0 %}
+                    <div class="custom-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-folder"></i> Categories
+                        </div>
+                        <div class="card-body">
+                            <div class="category-filter mb-3">
+                                <button class="category-btn active" data-category="all">
+                                    <span class="tech-tag">All Posts ({{ site.posts.size }})</span>
+                                </button>
+                            </div>
+                            {% for category in categories %}
+                                <div class="category-filter mb-2">
+                                    <button class="category-btn" data-category="{{ category[0] | slugify }}">
+                                        <span class="tech-tag">
+                                            {{ category[0] }} ({{ category[1].size }})
+                                        </span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Recent Posts -->
+                    {% if site.posts.size > 0 %}
+                    <div class="custom-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-clock"></i> Recent Posts
+                        </div>
+                        <div class="card-body">
+                            {% for post in site.posts limit:5 %}
+                            <div class="mb-3 pb-3 {% unless forloop.last %}border-bottom border-secondary{% endunless %}">
+                                <h6 class="mb-1">
+                                    <a href="{{ post.url | relative_url }}" class="text-decoration-none text-light">
+                                        {{ post.title }}
+                                    </a>
+                                </h6>
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar"></i> {{ post.date | date: "%b %d, %Y" }}
+                                </small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- About Widget -->
+                    <div class="custom-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-user"></i> About This Blog
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Welcome to my blog! Here I share my experiences, learnings, and insights 
+                                from my journey as a developer. From code tutorials to project retrospectives, 
+                                you'll find a mix of technical and personal content.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Follow Widget -->
+                    <div class="custom-card">
+                        <div class="card-header">
+                            <i class="fas fa-bell"></i> Stay Updated
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="mb-3">Follow me for the latest updates!</p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="https://github.com/{{ site.github_username }}" 
+                                   class="btn btn-outline-primary btn-sm" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/{{ site.linkedin_username }}" 
+                                   class="btn btn-outline-primary btn-sm" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="{{ '/feed.xml' | relative_url }}" 
+                                   class="btn btn-outline-primary btn-sm" target="_blank">
+                                    <i class="fas fa-rss"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Category Filtering -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const blogPosts = document.querySelectorAll('.blog-post');
+    const categoryTags = document.querySelectorAll('.category-tag');
+    const postsContainer = document.getElementById('blog-posts-container');
+    
+    // Only run filtering if we have posts
+    if (!postsContainer || blogPosts.length === 0) {
+        console.log('No posts found or container missing - filtering disabled');
+        return;
+    }
+    
+    console.log(`Found ${blogPosts.length} blog posts for filtering`);
+    
+    // Debug: Show what categories each post has
+    blogPosts.forEach((post, index) => {
+        const categories = post.getAttribute('data-categories') || '';
+        const title = post.querySelector('h2 a').textContent;
+        console.log(`Post ${index + 1}: "${title}" - Categories: "${categories}"`);
+    });
+    
+    function filterPosts(selectedCategory) {
+        console.log(`Filtering by category: "${selectedCategory}"`);
+        let visibleCount = 0;
+        
+        blogPosts.forEach(post => {
+            const postCategories = post.getAttribute('data-categories') || '';
+            const categoriesArray = postCategories.split(' ').filter(cat => cat.trim().length > 0);
+            
+            let shouldShow = selectedCategory === 'all' || categoriesArray.includes(selectedCategory);
+            
+            if (shouldShow) {
+                post.style.display = 'block';
+                post.style.opacity = '1';
+                post.classList.remove('filtered-out');
+                visibleCount++;
+            } else {
+                post.style.opacity = '0';
+                post.classList.add('filtered-out');
+                setTimeout(() => {
+                    if (post.classList.contains('filtered-out')) {
+                        post.style.display = 'none';
+                    }
+                }, 300);
+            }
+        });
+        
+        // Update active button
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        const activeButton = document.querySelector(`[data-category="${selectedCategory}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+        
+        // Update count
+        updateFilterCount(visibleCount, selectedCategory);
+        
+        console.log(`Showing ${visibleCount} posts`);
+    }
+    
+    function updateFilterCount(count, category) {
+        let countElement = document.querySelector('.filter-count');
+        if (!countElement) {
+            countElement = document.createElement('div');
+            countElement.className = 'filter-count';
+            postsContainer.appendChild(countElement);
+        }
+        
+        if (category === 'all') {
+            countElement.textContent = `Showing all ${count} posts`;
+        } else {
+            const categoryName = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            countElement.textContent = `Showing ${count} posts in "${categoryName}"`;
+        }
+    }
+    
+    // Add click handlers to category buttons
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const category = this.getAttribute('data-category');
+            filterPosts(category);
+        });
+    });
+    
+    // Add click handlers to category tags in posts
+    categoryTags.forEach(tag => {
+        tag.addEventListener('click', function(e) {
+            e.preventDefault();
+            const category = this.getAttribute('data-category');
+            filterPosts(category);
+            
+            // Scroll to posts
+            postsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    
+    // Initialize showing all posts
+    updateFilterCount(blogPosts.length, 'all');
+    console.log('Blog filtering initialized successfully');
+});
+</script>

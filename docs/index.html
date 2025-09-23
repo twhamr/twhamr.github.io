@@ -1,0 +1,249 @@
+---
+layout: default
+title: Home
+---
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center hero-content">
+                <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Profile Picture" class="profile-image mb-4">
+                
+                <h1 class="display-4 fw-bold mb-3 hero-title">Hello, I'm Your Name</h1>
+                <p class="lead mb-4 code-font">Full-Stack Developer | Problem Solver | Code Enthusiast</p>
+                
+                <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+                    <a href="{{ '/projects/' | relative_url }}" class="btn btn-primary">
+                        <i class="fas fa-laptop-code"></i> View Projects
+                    </a>
+                    <a href="{{ '/experiences/' | relative_url }}" class="btn btn-outline-primary">
+                        <i class="fas fa-briefcase"></i> My Experience
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="custom-card">
+                    <div class="card-body p-4">
+                        <h2 class="card-title mb-4">
+                            <i class="fas fa-user-circle text-primary"></i> About Me
+                        </h2>
+                        <p class="card-text mb-4">
+                            I'm a passionate developer with a love for creating innovative solutions and learning new technologies. 
+                            My journey in programming started [when you started] and has led me through various exciting projects 
+                            and experiences.
+                        </p>
+                        <p class="card-text mb-4">
+                            I specialize in [your specializations] and enjoy working on [types of projects you like]. 
+                            When I'm not coding, you can find me [your hobbies/interests].
+                        </p>
+                        
+                        <!-- Skills Section -->
+                        <h5 class="mt-4 mb-3">
+                            <i class="fas fa-tools text-primary"></i> Skills & Technologies
+                        </h5>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <!-- Add more skills as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="contact-info">
+                    <h2 class="mb-4 text-center">
+                        <i class="fas fa-envelope text-primary"></i> Get In Touch
+                    </h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong><br>
+                                    <a href="mailto:{{ site.email }}" class="text-primary">{{ site.email }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <i class="fab fa-github"></i>
+                                <div>
+                                    <strong>GitHub</strong><br>
+                                    <a href="https://github.com/{{ site.github_username }}" class="text-primary" target="_blank">
+                                        {{ site.github_username }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <div>
+                                    <strong>LinkedIn</strong><br>
+                                    <a href="https://linkedin.com/in/{{ site.linkedin_username }}" class="text-primary" target="_blank">
+                                        {{ site.linkedin_username }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Location</strong><br>
+                                    <span class="text-light">Your City, State</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Contact Form -->
+                    <div class="mt-4">
+                        <h5 class="mb-3">Quick Message</h5>
+                        <form id="contact-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control bg-dark text-light border-primary" 
+                                           placeholder="Your Name" name="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control bg-dark text-light border-primary" 
+                                           placeholder="Your Email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control bg-dark text-light border-primary" 
+                                          placeholder="Your Message" name="message" rows="4" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Work Preview -->
+<section class="py-5 bg-dark bg-opacity-25">
+    <div class="container">
+        <h2 class="text-center mb-5">
+            <i class="fas fa-star text-primary"></i> Featured Work
+        </h2>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5 class="card-title">Featured Project 1</h5>
+                        <p class="card-text">Brief description of your most impressive project.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="fas fa-eye"></i> Demo
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5 class="card-title">Featured Project 2</h5>
+                        <p class="card-text">Another impressive project showcase.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="fas fa-eye"></i> Demo
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5 class="card-title">Featured Project 3</h5>
+                        <p class="card-text">Third featured project description.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-primary me-2">
+                                <i class="fas fa-eye"></i> Demo
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-primary">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ '/projects/' | relative_url }}" class="btn btn-primary">
+                <i class="fas fa-arrow-right"></i> View All Projects
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,22 +1,96 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-  {%- include head.html -%}
+    <!-- Custom Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+    
+    {% seo %}
+    {% feed_meta %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ '/' | relative_url }}">
+                <i class="fas fa-code"></i> 
+                <span class="brand-text">{{ site.title | split: ' - ' | first }}</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/blog' %}active{% endif %}" href="{{ '/blog/' | relative_url }}">
+                            <i class="fas fa-blog"></i> Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/experiences' %}active{% endif %}" href="{{ '/experiences/' | relative_url }}">
+                            <i class="fas fa-briefcase"></i> Experiences
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/projects' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">
+                            <i class="fas fa-laptop-code"></i> Projects
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <body>
-
-    {%- include header.html -%}
-
-    <main class="" aria-label="Content">
-      <div class="">
+    <!-- Main Content -->
+    <main class="main-content">
         {{ content }}
-      </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
-    {%- include footer.html -%}
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-0">&copy; {{ 'now' | date: '%Y' }} {{ site.title | split: ' - ' | first }}. Built with Jekyll & Bootstrap.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="https://github.com/{{ site.github_username }}" class="text-light me-3" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/{{ site.linkedin_username }}" class="text-light me-3" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:{{ site.email }}" class="text-light">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  </body>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
 </html>

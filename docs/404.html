@@ -1,25 +1,234 @@
 ---
+layout: default
+title: "404 - Page Not Found"
 permalink: /404.html
-layout: page
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<!-- 404 Error Section -->
+<section class="error-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <!-- Animated 404 -->
+                <div class="error-code mb-4">
+                    <div class="code-display">
+                        <span class="error-digit">4</span>
+                        <span class="error-digit">0</span>
+                        <span class="error-digit">4</span>
+                    </div>
+                    <div class="error-animation">
+                        <div class="glitch-line"></div>
+                        <div class="glitch-line"></div>
+                        <div class="glitch-line"></div>
+                    </div>
+                </div>
+                
+                <!-- Error Message -->
+                <div class="error-message mb-5">
+                    <h1 class="display-5 fw-bold mb-3">Page Not Found</h1>
+                    <p class="lead mb-4">
+                        Oops! Looks like this page took a wrong turn in cyberspace. 
+                        The page you're looking for doesn't exist or has been moved.
+                    </p>
+                    
+                    <!-- Code-style error message -->
+                    <div class="code-error mb-4">
+                        <pre class="code-font"><code>Error: <span class="text-danger">ENOENT</span>
+Location: <span class="text-primary">{{ page.url | default: "unknown" }}</span>
+Status: <span class="text-warning">404 Not Found</span>
+Suggestion: <span class="text-success">try_navigation_below()</span></code></pre>
+                    </div>
+                </div>
+                
+                <!-- Navigation Options -->
+                <div class="error-navigation">
+                    <h4 class="mb-4">Where would you like to go?</h4>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-3">
+                            <a href="{{ '/' | relative_url }}" class="nav-card">
+                                <i class="fas fa-home fa-2x mb-3"></i>
+                                <h6>Home</h6>
+                                <small>Back to homepage</small>
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <a href="{{ '/projects/' | relative_url }}" class="nav-card">
+                                <i class="fas fa-laptop-code fa-2x mb-3"></i>
+                                <h6>Projects</h6>
+                                <small>View my work</small>
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <a href="{{ '/blog/' | relative_url }}" class="nav-card">
+                                <i class="fas fa-blog fa-2x mb-3"></i>
+                                <h6>Blog</h6>
+                                <small>Read my posts</small>
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <a href="{{ '/experiences/' | relative_url }}" class="nav-card">
+                                <i class="fas fa-briefcase fa-2x mb-3"></i>
+                                <h6>Experience</h6>
+                                <small>My background</small>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Box -->
+                    <div class="search-section mt-5">
+                        <h5 class="mb-3">Or search for what you need:</h5>
+                        <div class="search-container">
+                            <input type="text" id="search-input" class="form-control search-input" 
+                                   placeholder="Search posts, projects, or content...">
+                            <button class="btn btn-primary search-btn" onclick="performSearch()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fun Developer Message -->
+                <div class="developer-message mt-5">
+                    <div class="custom-card">
+                        <div class="card-body p-4">
+                            <h6 class="fw-bold mb-3">
+                                <i class="fas fa-code text-primary"></i> Developer Note
+                            </h6>
+                            <p class="mb-3">
+                                If you think this page should exist, it might be a broken link or a typo in the URL. 
+                                You can help me improve the site by reporting this issue!
+                            </p>
+                            <div class="d-flex gap-2 justify-content-center">
+                                <a href="mailto:{{ site.email }}?subject=404 Error Report&body=I found a broken link: {{ site.url }}{{ page.url | default: 'unknown' }}" 
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-bug"></i> Report Issue
+                                </a>
+                                <a href="javascript:history.back()" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-arrow-left"></i> Go Back
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Content -->
+                <div class="recent-content mt-5">
+                    <h5 class="mb-4">Maybe you're looking for these?</h5>
+                    
+                    <div class="row">
+                        <!-- Recent Posts -->
+                        {% if site.posts.size > 0 %}
+                        <div class="col-md-6 mb-4">
+                            <div class="custom-card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-clock"></i> Recent Posts
+                                </div>
+                                <div class="card-body">
+                                    {% for post in site.posts limit:3 %}
+                                    <div class="recent-item">
+                                        <a href="{{ post.url | relative_url }}" class="text-decoration-none">
+                                            <h6 class="text-light">{{ post.title }}</h6>
+                                            <small class="text-muted">{{ post.date | date: "%b %d, %Y" }}</small>
+                                        </a>
+                                    </div>
+                                    {% unless forloop.last %}<hr class="my-2">{% endunless %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Popular Projects -->
+                        {% if site.projects.size > 0 %}
+                        <div class="col-md-6 mb-4">
+                            <div class="custom-card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-star"></i> Featured Projects
+                                </div>
+                                <div class="card-body">
+                                    {% for project in site.projects limit:3 %}
+                                    <div class="recent-item">
+                                        <a href="{{ project.url | relative_url }}" class="text-decoration-none">
+                                            <h6 class="text-light">{{ project.title }}</h6>
+                                            {% if project.subtitle %}
+                                            <small class="text-muted">{{ project.subtitle | truncate: 50 }}</small>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    {% unless forloop.last %}<hr class="my-2">{% endunless %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="container">
-  <h1>404</h1>
+<!-- Custom JavaScript for 404 page -->
+<script>
+// Simple search functionality
+function performSearch() {
+    const query = document.getElementById('search-input').value.trim();
+    if (query) {
+        // For Jekyll sites, you could integrate with search plugins
+        // For now, redirect to Google site search
+        window.open(`https://www.google.com/search?q=site:{{ site.url | remove: 'https://' | remove: 'http://' }} ${encodeURIComponent(query)}`, '_blank');
+    }
+}
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+// Allow Enter key to trigger search
+document.getElementById('search-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+});
+
+// Add some interactive animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate error digits on load
+    const digits = document.querySelectorAll('.error-digit');
+    digits.forEach((digit, index) => {
+        setTimeout(() => {
+            digit.style.transform = 'rotateY(360deg)';
+        }, index * 200);
+    });
+    
+    // Add hover effects to navigation cards
+    const navCards = document.querySelectorAll('.nav-card');
+    navCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.05)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+
+// Easter egg - Konami code
+let konamiCode = [];
+const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+
+document.addEventListener('keydown', function(e) {
+    konamiCode.push(e.keyCode);
+    if (konamiCode.length > konamiSequence.length) {
+        konamiCode.shift();
+    }
+    
+    if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+        document.querySelector('.error-code').style.animation = 'rainbow 2s infinite';
+        setTimeout(() => {
+            alert('🎉 Easter egg found! You have excellent debugging skills!');
+        }, 1000);
+    }
+});
+</script>

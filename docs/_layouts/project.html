@@ -1,0 +1,322 @@
+---
+layout: default
+---
+
+<!-- Project Header -->
+<section class="py-5 bg-dark bg-opacity-25">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center">
+                    <h1 class="display-5 fw-bold mb-3">{{ page.title }}</h1>
+                    
+                    {% if page.subtitle %}
+                    <p class="lead mb-4">{{ page.subtitle }}</p>
+                    {% endif %}
+                    
+                    <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+                        {% if page.demo_url %}
+                        <a href="{{ page.demo_url }}" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-eye"></i> Live Demo
+                        </a>
+                        {% endif %}
+                        
+                        {% if page.github_url %}
+                        <a href="{{ page.github_url }}" class="btn btn-outline-primary" target="_blank">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        {% endif %}
+                        
+                        {% if page.download_url %}
+                        <a href="{{ page.download_url }}" class="btn btn-outline-primary" target="_blank">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                        {% endif %}
+                    </div>
+                    
+                    {% if page.tech_stack %}
+                    <div class="tech-stack justify-content-center">
+                        {% for tech in page.tech_stack %}
+                            <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Details -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Project Images/Screenshots -->
+                {% if page.images %}
+                <div class="custom-card mb-4">
+                    <div class="card-body p-0">
+                        <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for image in page.images %}
+                                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                    <img src="{{ image | relative_url }}" class="d-block w-100" alt="Project Screenshot">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            {% if page.images.size > 1 %}
+                            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Project Description -->
+                <div class="custom-card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">
+                            <i class="fas fa-info-circle"></i> Project Overview
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="project-content">
+                            {{ content }}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features -->
+                {% if page.features %}
+                <div class="custom-card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">
+                            <i class="fas fa-star"></i> Key Features
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for feature in page.features %}
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-check-circle text-primary me-2 mt-1"></i>
+                                    <span>{{ feature }}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Technical Details -->
+                {% if page.technical_details %}
+                <div class="custom-card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">
+                            <i class="fas fa-cogs"></i> Technical Implementation
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        {{ page.technical_details | markdownify }}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Code Snippets -->
+                {% if page.code_snippets %}
+                <div class="custom-card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">
+                            <i class="fas fa-code"></i> Code Highlights
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        {% for snippet in page.code_snippets %}
+                        <div class="mb-4">
+                            {% if snippet.title %}
+                            <h5 class="mb-2">{{ snippet.title }}</h5>
+                            {% endif %}
+                            {% if snippet.description %}
+                            <p class="mb-3">{{ snippet.description }}</p>
+                            {% endif %}
+                            <div class="highlight">
+                                <pre><code class="language-{{ snippet.language }}">{{ snippet.code }}</code></pre>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Challenges & Solutions -->
+                {% if page.challenges %}
+                <div class="custom-card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">
+                            <i class="fas fa-lightbulb"></i> Challenges & Solutions
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        {% for challenge in page.challenges %}
+                        <div class="mb-4 pb-4 {% unless forloop.last %}border-bottom border-secondary{% endunless %}">
+                            <h5 class="text-primary mb-2">{{ challenge.problem }}</h5>
+                            <p class="mb-0">{{ challenge.solution }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Lessons Learned -->
+                {% if page.lessons_learned %}
+                <div class="custom-card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">
+                            <i class="fas fa-graduation-cap"></i> Lessons Learned
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            {% for lesson in page.lessons_learned %}
+                            <li class="mb-2">{{ lesson }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Project Info Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Project Stats -->
+                    <div class="custom-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-bar"></i> Project Info
+                        </div>
+                        <div class="card-body">
+                            {% if page.status %}
+                            <div class="mb-3">
+                                <strong>Status:</strong>
+                                <span class="badge {% if page.status == 'Completed' %}bg-success{% elsif page.status == 'In Progress' %}bg-warning{% else %}bg-secondary{% endif %}">
+                                    {{ page.status }}
+                                </span>
+                            </div>
+                            {% endif %}
+                            
+                            {% if page.project_type %}
+                            <div class="mb-3">
+                                <strong>Type:</strong> {{ page.project_type }}
+                            </div>
+                            {% endif %}
+                            
+                            {% if page.duration %}
+                            <div class="mb-3">
+                                <strong>Duration:</strong> {{ page.duration }}
+                            </div>
+                            {% endif %}
+                            
+                            {% if page.team_size %}
+                            <div class="mb-3">
+                                <strong>Team Size:</strong> {{ page.team_size }}
+                            </div>
+                            {% endif %}
+                            
+                            {% if page.my_role %}
+                            <div class="mb-3">
+                                <strong>My Role:</strong> {{ page.my_role }}
+                            </div>
+                            {% endif %}
+                            
+                            {% if page.completion_date %}
+                            <div class="mb-3">
+                                <strong>Completed:</strong> {{ page.completion_date | date: "%B %Y" }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Technology Stack -->
+                    {% if page.tech_stack %}
+                    <div class="custom-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-layer-group"></i> Technology Stack
+                        </div>
+                        <div class="card-body">
+                            <div class="tech-stack">
+                                {% for tech in page.tech_stack %}
+                                    <span class="tech-tag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Links -->
+                    <div class="custom-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-link"></i> Quick Links
+                        </div>
+                        <div class="card-body">
+                            {% if page.demo_url %}
+                            <a href="{{ page.demo_url }}" class="btn btn-outline-primary w-100 mb-2" target="_blank">
+                                <i class="fas fa-eye"></i> Live Demo
+                            </a>
+                            {% endif %}
+                            
+                            {% if page.github_url %}
+                            <a href="{{ page.github_url }}" class="btn btn-outline-primary w-100 mb-2" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                            {% endif %}
+                            
+                            {% if page.documentation_url %}
+                            <a href="{{ page.documentation_url }}" class="btn btn-outline-primary w-100 mb-2" target="_blank">
+                                <i class="fas fa-book"></i> Documentation
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Related Projects -->
+                    {% assign related_projects = site.projects | where_exp: "project", "project.url != page.url" | limit: 3 %}
+                    {% if related_projects.size > 0 %}
+                    <div class="custom-card">
+                        <div class="card-header">
+                            <i class="fas fa-folder"></i> Related Projects
+                        </div>
+                        <div class="card-body">
+                            {% for project in related_projects %}
+                            <div class="mb-3 pb-3 {% unless forloop.last %}border-bottom border-secondary{% endunless %}">
+                                <h6 class="mb-1">
+                                    <a href="{{ project.url | relative_url }}" class="text-decoration-none text-light">
+                                        {{ project.title }}
+                                    </a>
+                                </h6>
+                                {% if project.subtitle %}
+                                <small class="text-muted">{{ project.subtitle | truncate: 50 }}</small>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back to Projects -->
+        <div class="text-center mt-5">
+            <a href="{{ '/projects/' | relative_url }}" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+        </div>
+    </div>
+</section>

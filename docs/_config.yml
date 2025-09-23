@@ -1,35 +1,24 @@
-# Site-wide settings
-
-
-# Variables
-title: tmcraft.us
-description: >- 
-  Personal webpage that contains my blog, contact information, and other various things.
-url: "https://tmcraft.us"
-collections_dir: _pages
-
-
-# Site owner
-owner:
-  name: Tyler Hamrick
-  email: hamrtw02@gmail.com
-  bio: "Undergrad Student studying Informatics @ Indiana University Bloomington"
-
-# Owner's socials
-social:
-  github: twhamr
-  linkedin: tywahamr
-  twitter:
-  instagram:
-  youtube:
-
+# Site settings
+title: "Tyler Hamrick - Developer Portfolio"
+email: hamrtw02@gmail.com
+description: >-
+  Full-stack developer passionate about creating innovative solutions
+  and building meaningful projects.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://tmcraft.us" # the base hostname & protocol for your site
+twitter_username: realtylenol
+github_username: twhamr
+linkedin_username: tywahamr
 
 # Build settings
+markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-include: ['_pages']
+# Exclude from processing
 exclude:
   - .sass-cache/
   - .jekyll-cache/
@@ -41,3 +30,24 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+# Collections
+collections:
+  experiences:
+    output: false
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
