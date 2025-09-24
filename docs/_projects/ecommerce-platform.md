@@ -5,6 +5,8 @@ subtitle: "Full-stack online shopping solution with modern features"
 date: 2024-01-10
 status: "Completed"
 project_type: "Personal Project"
+featured: true
+data_filters: [fullstack, javascript]
 duration: "3 months"
 team_size: "Solo"
 my_role: "Full-Stack Developer"
