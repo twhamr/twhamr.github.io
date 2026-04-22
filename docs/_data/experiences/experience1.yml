@@ -1,0 +1,18 @@
+role: Teaching Assistant
+company: Indiana University - Informatics Department
+location: Bloomington, IN
+period: 01/2025 - Present
+summary: Supported instruction for a full-stack development course focused on Python, Jinja templating, and SQL database integration.
+highlights:
+  - Led weekly lab sessions for 10-15 students, providing hands-on guidance in backend development using Python and Jinja.
+  - Assisted students with building dynamic web applications connected to SQL databases.
+  - Supported debugging and troubleshooting of full-stack applications during lectures and lab sessions.
+  - Collaborated with the professor to develop programming assignments and project specifications.
+  - Held virtual office hours three times per week to provide additional technical support and code reviews.
+skills:
+  - python
+  - jinja
+  - sql
+  - full-stack-development
+  - teaching
+  - debugging

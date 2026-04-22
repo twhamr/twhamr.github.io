@@ -1,0 +1,30 @@
+---
+permalink: /404.html
+layout: default
+title: Not Found
+---
+
+<section class="taxonomy-page not-found-page">
+  <header class="taxonomy-header">
+    <h1 class="not-found-code">404</h1>
+    <p class="taxonomy-intro">Page not found</p>
+  </header>
+
+  <div class="taxonomy-card not-found-card">
+    <p class="not-found-message">
+      The page you are looking for does not exist or may have been moved.
+    </p>
+
+    <div class="not-found-actions">
+      <a class="taxonomy-button" href="{{ '/' | relative_url }}">Go Home</a>
+      <a class="taxonomy-button" href="{{ '/blog/' | relative_url }}">View Blog</a>
+      <a class="taxonomy-button" href="{{ '/projects/' | relative_url }}">View Projects</a>
+    </div>
+  </div>
+
+  <div class="not-found-terminal">
+    <p><span class="terminal-prompt">user@site:~$</span> cd /unknown/path</p>
+    <p><span class="terminal-error">error:</span> directory not found</p>
+    <p><span class="terminal-prompt">user@site:~$</span> cd /home</p>
+  </div>
+</section>

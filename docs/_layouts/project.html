@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<article class="taxonomy-page taxonomy-article">
+  <div class="taxonomy-article-header">
+    <p class="taxonomy-kicker">Project</p>
+    <h1 class="taxonomy-article-title">{{ page.title }}</h1>
+
+    <div class="taxonomy-article-meta">
+      {% if page.date %}
+        <span class="taxonomy-date">{{ page.date | date: "%b %-d, %Y" }}</span>
+      {% endif %}
+
+      {% if page.skills and page.skills.size > 0 %}
+        <span class="taxonomy-badges">
+          {% for skill in page.skills %}
+            <span class="taxonomy-badge">{{ skill }}</span>
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+
+    {% if page.excerpt %}
+      <p class="taxonomy-article-summary">{{ page.excerpt | strip_html }}</p>
+    {% endif %}
+
+    {% if page.repo_url or page.demo_url %}
+      <div class="taxonomy-article-links">
+        {% if page.repo_url %}
+          <a class="taxonomy-nav-link" href="{{ page.repo_url }}" target="_blank" rel="noopener">Repository ↗</a>
+        {% endif %}
+        {% if page.demo_url %}
+          <a class="taxonomy-nav-link" href="{{ page.demo_url }}" target="_blank" rel="noopener">Live Demo ↗</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="taxonomy-article-body">
+    <div class="taxonomy-article-content">
+      {{ content }}
+    </div>
+  </div>
+
+  <nav class="taxonomy-article-nav" aria-label="Project navigation">
+    <a class="taxonomy-nav-link" href="{{ '/projects/' | relative_url }}">← Back to Projects</a>
+  </nav>
+</article>

@@ -1,0 +1,48 @@
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Left Column -->
+    <div class="footer-left">
+      <h3>Tyler Hamrick</h3>
+      <p>
+        {{ site.description }}
+      </p>
+    </div>
+
+    <!-- Center Column -->
+    <div class="footer-center">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">About</a></li>
+        <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
+        <li><a href="{{ '/experience/' | relative_url }}">Experience</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Column -->
+    <div class="footer-right">
+      <h3>Connect</h3>
+      <ul>
+        <li>
+          <i class="bi bi-github"></i>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
+        </li>
+        <li>
+          <i class="bi bi-linkedin"></i>
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank">LinkedIn</a>
+        </li>
+        <li>
+          <i class="bi bi-envelope"></i>
+          <a href="mailto:{{ site.email }}">Email</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }} — Built with Jekyll</p>
+  </div>
+</footer>

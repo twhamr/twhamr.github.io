@@ -1,0 +1,27 @@
+{% if page.url != "/" and page.url != "/index.html" %}
+<nav class="breadcrumbs terminal-breadcrumbs" aria-label="Breadcrumb">
+  <span class="breadcrumb-prompt">user@site:~$</span>
+  <a href="{{ '/' | relative_url }}">home</a>
+
+  {% assign segments = page.url | split: '/' %}
+  {% assign path = "" %}
+
+  {% for segment in segments %}
+    {% if segment != "" %}
+      {% assign path = path | append: "/" | append: segment %}
+
+      <span class="breadcrumb-separator">/</span>
+
+      {% if forloop.last %}
+        <span class="breadcrumb-current">
+          {{ page.breadcrumb_title | default: page.title | default: segment | replace: "-", " " }}
+        </span>
+      {% else %}
+        <a href="{{ path | relative_url }}">
+          {{ segment | replace: "-", " " }}
+        </a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endif %}

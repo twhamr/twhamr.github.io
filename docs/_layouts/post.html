@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<article class="taxonomy-page taxonomy-article">
+  <div class="taxonomy-article-header">
+    <p class="taxonomy-kicker">Blog Post</p>
+    <h1 class="taxonomy-article-title">{{ page.title }}</h1>
+
+    <div class="taxonomy-article-meta">
+      <span class="taxonomy-date">{{ page.date | date: "%b %-d, %Y" }}</span>
+
+      {% if page.tags and page.tags.size > 0 %}
+        <span class="taxonomy-badges">
+          {% for tag in page.tags %}
+            <span class="taxonomy-badge">{{ tag }}</span>
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+
+    {% if page.excerpt %}
+      <p class="taxonomy-article-summary">{{ page.excerpt | strip_html }}</p>
+    {% endif %}
+  </div>
+
+  <div class="taxonomy-article-body">
+    <div class="taxonomy-article-content">
+      {{ content }}
+    </div>
+  </div>
+
+  <nav class="taxonomy-article-nav" aria-label="Post navigation">
+    <a class="taxonomy-nav-link" href="{{ '/blog/' | relative_url }}">← Back to Blog</a>
+
+    <div class="taxonomy-nav-spacer"></div>
+
+    {% if page.previous and page.previous.url %}
+      <a class="taxonomy-nav-link" href="{{ page.previous.url | relative_url }}">Newer Post →</a>
+    {% endif %}
+  </nav>
+</article>

@@ -1,0 +1,20 @@
+role: Cybersecurity Intern
+company: EXOS
+location: Indianapolis, IN
+period: 05/2025 - 08/2025
+summary: Supported and managed cybersecurity operations for 40+ clients, assisting in threat monitoring, incident response, and endpoint remediation.
+highlights:
+  - Monitored and investigated security alerts across client endpoints using tools such as SentinelOne, Microsoft Entra, Avanan, and DNSFilter.
+  - Resolved security and technical support tickets in collaboration with the security team, improving response efficiency.
+  - Provided on-site technical support to remediate endpoint vulnerabilities and system issues.
+  - Automated and streamlined monthly cybersecurity reporting to improve accuracy and reduce manual effort.
+  - Maintained and strengthened client security posture through proactive monitoring and tool management.
+skills:
+  - cybersecurity
+  - incident-response
+  - endpoint-security
+  - security-monitoring
+  - reporting
+  - microsoft-entra
+  - sentinelon
+  - dnsfilter
