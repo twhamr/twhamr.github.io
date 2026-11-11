@@ -15,7 +15,7 @@ title: Home
       </div>
 
       <div class="home-intro">
-        <h1 class="home-name">Your Name</h1>
+        <h1 class="home-name">Tyler Hamrick</h1>
         <p class="home-title">Networking | Software Development | Cybersecurity</p>
 
         <p class="taxonomy-intro home-description">
